@@ -1,0 +1,57 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "User profile and persistent state",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "coins": { "type": "number" },
+        "stars": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "lastLogin": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid"]
+    },
+    "Score": {
+      "title": "Game Score",
+      "description": "Performance tracking for various modes",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "displayName": { "type": "string" },
+        "score": { "type": "number" },
+        "mode": { "type": "string", "enum": ["classic", "timed", "daily", "relax", "kids"] },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "score", "mode"]
+    },
+    "Achievement": {
+      "title": "User Achievement",
+      "description": "Badges earned by the user",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "badgeId": { "type": "string" },
+        "earnedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "badgeId"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "User",
+      "description": "Main user records"
+    },
+    "leaderboard/{scoreId}": {
+      "schema": "Score",
+      "description": "Global high scores"
+    },
+    "users/{userId}/achievements/{achId}": {
+      "schema": "Achievement",
+      "description": "Achievements earned by a specific user"
+    }
+  }
+}

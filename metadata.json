@@ -1,0 +1,6 @@
+{
+  "name": "Color Block Puzzle",
+  "description": "A fun and relaxing puzzle game where you clear lines by placing colorful blocks on a grid. Featuring multiple game modes, satisfying animations, and daily challenges.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
